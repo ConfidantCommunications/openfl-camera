@@ -89,7 +89,7 @@ class Camera extends EventDispatcher {
 				if (device.kind == MediaDeviceKind.VIDEO_INPUT) {
 					names.push(device.label);
 					devices.set(device.label, device);
-					trace([device.label, device]);
+					// trace([device.label, device]);
 				}
 			}
 			if (updateNames)
