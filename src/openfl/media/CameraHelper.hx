@@ -2,18 +2,14 @@ package openfl.media;
 
 import js.lib.Promise;
 import js.Browser;
-import js.html.VideoElement;
-import js.html.MediaStream;
-import js.html.MediaStreamTrack;
-import js.html.CanvasRenderingContext2D;
-import js.html.CanvasElement;
+import js.html.*;
 
-using Camera.MediaDeviceInfo;
-using Camera.MediaDevices;
-using Camera.MediaDeviceKind;
+// using Camera.MediaDeviceInfo;
+// using Camera.MediaDevices;
+// using Camera.MediaDeviceKind;
 
 /**
- * This class makes it easier to work with multiple cameras.
+ * This class makes it easier to work with multiple cameras. Maybe. 
  */
 
 class CameraHelper {
@@ -37,11 +33,16 @@ class CameraHelper {
             jsCamName = s;
         });
 	 */
+    /* public function stopStream(stream:MediaStream):Void {
+        for (t in stream.getTracks()){
+            t.stop();
+        }
+    } */
 	public function nextCamera(currentCamera:String = "",callback:String->Void):Void {
         mediaDevices.enumerateDevices().then(function(_devices:Array<MediaDeviceInfo>) {
             var names:Array<String> = [];
 			for (device in _devices) {
-				if (device.kind == MediaDeviceKind.VIDEO_INPUT) {
+				if (device.kind == MediaDeviceKind.VIDEOINPUT) {
                     trace("device:"+device.label);
 					names.push(device.label);
 				}
